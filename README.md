@@ -32,7 +32,7 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Visual Studio Code
 ​
 ## 使用素材
 必要に応じて加筆予定（使用しなければ後に削除します）

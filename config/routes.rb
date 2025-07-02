@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     sessions:'admin/sessions'
   }
 
-  devise_for :users
-  root to: 'homes#top'
-  get 'homes/about'
+  scope module: :public do
+    devise_for :users
+    root to: 'homes#top'
+    get 'homes/about'
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'users/edit'
+  get 'users/show'
+  get 'users/update'
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions:'admin/sessions'
   }

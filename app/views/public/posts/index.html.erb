@@ -1,9 +1,5 @@
-<%= render 'public/header' %>
 
-<div>
-  <%= image_tag @user.get_profile_image %>
-  <h2> <%= @user.name %></h2>
-</div>
+<%= render 'public/header' %>
 
 <% @posts.each do |post| %>
   <div>
@@ -13,4 +9,3 @@
     <% end %>
   </div>
 <% end %>
-

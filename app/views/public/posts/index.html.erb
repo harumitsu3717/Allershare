@@ -4,8 +4,7 @@
 <% @posts.each do |post| %>
   <div>
     <%= link_to post_path(post.id) do %>
-      <p>タイトル：<%= post.title %> </p>
-      <p>本文：<%= post.body %> </p>
+      <p><%= post.body %> </p>
     <% end %>
   </div>
 <% end %>

@@ -16,3 +16,30 @@
   text-decoration: none;
   background-color:#dcdddd ;
 }
+
+.posts {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.post {
+  color: black;
+}
+
+.post:hover {
+  color: black;
+  text-decoration: none;
+  background-color:#dcdddd ;
+}
+
+.user {
+  color: black ;
+}
+
+.user:hover {
+  color: black;
+}
+
+.user_icon {
+  border-radius: 100px;
+}

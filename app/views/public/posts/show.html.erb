@@ -1,9 +1,28 @@
-<%= render 'public/header' %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/header' %>
+    </div>
 
-<div>
-  <h3><%= @post.body %></h3>
-  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @post.user == current_user %>
-    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <% end %>
+    <div class="col-1"></div>
+
+    <div class="col-8">
+    <div class="row col-11 d-flex mt-2 mb-2">
+          <%= image_tag @post.user.profile_image.variant(resize:'80x80').processed, class: "border rounded-circle" %>
+          <h3 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to @post.user.name, user_path(@post.user.id), class: "ml-3 user" %></h3>
+          <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l @post.created_at %></p>
+        </div>
+        <div class="d-flex flex-column border-bottom pb-3">
+          <h4><%= @post.body %></h4>
+          <% if @post.image.attached? %>
+            <%= image_tag @post.image, class:"img-fluid col-11 mt-2 d-flex align-items-center" %>
+          <% end %>
+          <div class="d-flex justify-content-end mt-2">
+          <% if @post.user == current_user %>
+            <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mr-4" %>
+          <% end %>
+          </div>
+        </div>
+</div>
+</div>
 </div>

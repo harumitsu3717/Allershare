@@ -1,10 +1,20 @@
+<div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= render 'public/header' %>
+      </div>
 
-<%= render 'public/header' %>
+      <div class="col-1"></div>
 
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <p><%= post.body %> </p>
-    <% end %>
-  </div>
-<% end %>
+      <div class="col-8">
+      <% @posts.each do |post| %>
+      <div>
+        <%= link_to post_path(post.id) do %>
+        <p><%= post.body %> </p>
+        <% end %>
+      </div>
+      
+      <% end %>
+      </div>
+    </div>
+</div>

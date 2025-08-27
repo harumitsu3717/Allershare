@@ -1,20 +1,20 @@
 <div class="container-fluid background-image">
-  <div class= "col10 haikei d-flex justify-content-center align-items-center">
-  <div class= "d-flex flex-column align-items-center bg-light bg-opacity-50">
-  <h1 class="row">Allershareにようこそ</h1>
-  <p class= "mt-5 text-center">Allershareは<br>
+  <div class= "col-10 haikei d-flex justify-content-center align-items-center">
+  <div class= "d-flex flex-column align-items-center contents p-4">
+  <h1 class="row font-italic text">Allershareにようこそ</h1>
+  <p class= "mt-5 text-center text">Allershareは<br>
      「すべての食事に制限を持つ人に『選択の自由』を」<br>
      をモットーに製作されたSNSサービスです。<br>
      食べられないものを諦めてしまうのではなく、<br>
      食べられる『別の選択肢』を探してみませんか。</p>
 
-  <%= link_to "覗いてみる", posts_path %>
+  <%= link_to "覗いてみる", posts_path, class: "link font-weight-bold mb-3" %>
 
   <div class="row">
   <% if user_signed_in? %>
   <% else %>
-  <%= link_to "新規登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "新規登録", new_user_registration_path, class: "link font-weight-bold mr-3" %>
+  <%= link_to "ログイン", new_user_session_path, class: "link font-weight-bold ml-3" %>
   <% end %>
   </div>
   </div>

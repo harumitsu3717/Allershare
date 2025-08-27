@@ -1,23 +1,37 @@
 <header>
+  <div class="d-flex flex-column justify-content-around align-items-center pb-5 border-right nav">
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-        <li>
-          <%= link_to "投稿一覧", posts_path %>
-        </li>
-        <li>
-          <%= link_to "新規投稿", new_post_path %>
-        </li>
-        <li>
-          <%= link_to "マイページ", mypage_path %>
-        </li>
+        <div class="mt-5 flex-fill d-flex align-items-center">
+          <%= link_to mypage_path, class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-house"></i>マイページ</h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center">
+          <%= link_to posts_path,class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-book-open"></i>投稿一覧</h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center">
+          <%= link_to new_post_path, class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-pencil"></i>新規投稿</h5>
+          <% end %>
+        </div>
+        <div class="mb-5 flex-fill d-flex align-items-center">
+          <%= link_to destroy_user_session_path, method: :delete, class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-right-from-bracket"></i>ログアウト</h5>
+          <% end %>
+        </div>
       <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%=link_to "ログイン", new_user_session_path %>
-        </li>
+        <div class="flex-fill d-flex align-items-center">
+          <%= link_to new_user_registration_path, class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-user-plus"></i>新規登録</h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center">
+          <%=link_to new_user_session_path, class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-right-to-bracket"></i>ログイン</h5>
+          <% end %>
+        </div>
       <% end %>
-    </header>
+  </div>
+</header>

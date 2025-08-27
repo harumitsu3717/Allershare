@@ -6,15 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/57875cad45.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'homes' , media: 'all' %>
     <%= stylesheet_link_tag 'application' , media: 'all' %>
+    <%= stylesheet_link_tag 'posts' , media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
-    <p class="px0 alert mx0"><%= alert %></p>
+    <p class="alert py-0 my-0"><%= alert %></p>
 
     <%= yield %>
   </body>

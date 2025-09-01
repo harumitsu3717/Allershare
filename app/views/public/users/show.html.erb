@@ -9,7 +9,7 @@
   <div class="col-8">
     <div class="d-flex align-items-center border-bottom pb-3">
       <div class="d-flex flex-column justify-content-center">
-        <%= image_tag @user.profile_image.variant(resize: '100x100'), class: "border rounded-circle" %>
+        <%= image_tag @user.get_profile_image(100, 100), class: "border rounded-circle user_icon" %>
         <h2 class="text-center"> <%= @user.name %></h2>
       </div>
       <p class="border rounded col-8 ml-3"> <%= @user.profile %></p>
@@ -19,7 +19,7 @@
     <div class="col-10 border-bottom mt-2 posts">
       <% @posts.each do |post| %>
         <div class="row col-11 d-flex mt-2">
-          <%= image_tag post.user.profile_image.variant(resize:'45x45').processed, class: "border rounded-circle" %>
+          <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon" %>
           <p class="d-flex align-items-center mb-0 mr-3 ml-2"><%= post.user.name %></p>
           <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
         </div>

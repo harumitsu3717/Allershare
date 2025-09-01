@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     devise_for :users
     root to: 'homes#top'
     resources :posts, only: [:new, :create, :index, :show, :destroy]
-    resources :users, only: [:edit, :show, :index, :update]
+    resources :users, only: [:edit, :show, :update]
     get 'mypage' => 'users#mypage', as: 'mypage'
     get 'unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'withdraw' => 'users#withdraw', as: 'withdraw'

@@ -35,4 +35,4 @@
 - IDE：Visual Studio Code
 ​
 ## 使用素材
-必要に応じて加筆予定（使用しなければ後に削除します）
+・GIRLY DROP様

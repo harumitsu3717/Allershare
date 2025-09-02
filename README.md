@@ -35,5 +35,5 @@
 - IDE：Visual Studio Code
 ​
 ## 使用素材
-・GIRLY DROP様
-・イラストAC様
+- GIRLY DROP様
+- イラストAC様

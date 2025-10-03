@@ -1,11 +1,13 @@
-
-<h1>ゆーざーいちらん</h1>
-
-<% @user.each do |user| %>
-  <%= link_to user_path(user.id) do %>
-    <div>
-      <%= image_tag user.profile_image.variant(resize: '50x50') %>
-      <h4><%= user.name %> </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/header' %>
     </div>
-  <% end %>
-<% end %>
+
+    <div class="col-1"></div>
+
+    <div class="col-8 border users">
+    <%= render 'index' %>
+    </div>
+  </div>
+</div>

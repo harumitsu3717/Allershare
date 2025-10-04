@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'searches/search'
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions:'admin/sessions'
   }
+
+  namespace :admin do
+    get 'dashboards', to: 'dashboards#index'
+    patch 'withdrawal/:id' => 'users#withdrawal', as: 'withdrawal'
+  end
 
   scope module: :public do
     devise_for :users

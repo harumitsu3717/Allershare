@@ -1,0 +1,13 @@
+<h1>全ユーザー一覧</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.name %> - <%= user.email %>
+      <% if user.is_active %>
+        <%= link_to '退会させる', admin_withdrawal_path(user.id), method: :patch, "data-confirm" => "退会させますか？" %>
+      <% else %>
+        <%= link_to '有効にする', admin_withdrawal_path(user.id), method: :patch, "data-confirm" => "有効にさせますか？" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

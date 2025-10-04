@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
+    get '/search' => 'searches#search'
     patch 'withdrawal/:id' => 'users#withdrawal', as: 'withdrawal'
+    resources :posts, only: [:show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
+    resources :users, only: [:show]
   end
 
   scope module: :public do

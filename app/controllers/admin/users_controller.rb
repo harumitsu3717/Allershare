@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
 
+  layout 'admin'
   before_action :authenticate_admin!
 
   def withdrawal
@@ -11,6 +12,11 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = "退会処理を実行しました"
     end
     redirect_to admin_dashboards_path
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page])
   end
 
 end

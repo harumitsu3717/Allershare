@@ -4,16 +4,22 @@
   <title>Admin - Allershare</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <script src="https://kit.fontawesome.com/57875cad45.js" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag 'application' , media: 'all' %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
   <% if admin_signed_in? %>
-    <div class="text-right">
+    <div class="d-flex flex-column align-items-center text-right">
       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+      <%= link_to 'ダッシュボード', admin_dashboards_path %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= render 'admin/searches/form' %>
     </div>
   <% end %>
-  <p class="notice"><%= notice %></p>
+  <p class="notice d-flex justify-content-center p-2 mb-0"><%= notice %></p>
   <%= yield %>
 </body>
 </html>

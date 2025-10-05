@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 col-sm-2 col-md-3">
       <%= render 'public/header' %>
     </div>
 
-    <div class="col-1"></div>
+    <div class="col-1 hidden-on-mobile"></div>
 
     <div class="col-8">
       <div class="row col-11 d-flex mt-2 mb-2">
@@ -24,6 +24,7 @@
           <% end %>
           </div>
         </div>
+        <% if user_signed_in? %>
         <div class="border-bottom py-3">
           <div class="d-flex justify-content-center">
             <%= form_with model: [@post, @post_comment] do |f| %>
@@ -37,6 +38,7 @@
           <% end %>
           </div>
         </div>
+        <% end %>
         <div>
           <% @post.post_comments.each do |post_comment| %>
             <div class="row pt-3">

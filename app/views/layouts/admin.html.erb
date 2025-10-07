@@ -12,8 +12,8 @@
 <body>
   <% if admin_signed_in? %>
     <div class="d-flex flex-column align-items-center text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-      <%= link_to 'ダッシュボード', admin_dashboards_path %>
+      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "my-2" %>
+      <%= link_to 'ダッシュボード', admin_dashboards_path, class: "mb-2" %>
     </div>
     <div class="d-flex justify-content-center">
       <%= render 'admin/searches/form' %>

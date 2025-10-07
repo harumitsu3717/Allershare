@@ -1,18 +1,18 @@
-<div class="container-fluid background-image p-5">
-<div class="col-8 d-flex justify-content-center flex-column mx-auto border-reft haikei">
-<div class="col-8 d-flex justify-content-center flex-column mx-auto contents">
+<div class="container-fluid d-flex justify-content-center background-image-2">
+<div class="d-flex justify-content-center flex-column haikei_sessions">
+<div class="d-flex justify-content-center flex-column mx-auto contents">
 <div class="mx-auto">
 <h2>ログイン</h2>
-
+<p class="alert py-0 my-0 d-flex justify-content-center"><%= alert %></p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email, "メールアドレス", class: "mb-0" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2 form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :password, "パスワード", class: "mb-0" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "mb-2" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "mb-2 form-control" %>
   </div>
 
   <% if devise_mapping.rememberable? %>

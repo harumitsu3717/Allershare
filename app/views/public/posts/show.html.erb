@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container frame">
   <div class="row">
     <div class="col-2 col-sm-2 col-md-3">
       <%= render 'public/header' %>
@@ -12,8 +12,9 @@
           <h3 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to @post.user.name, user_path(@post.user.id), class: "ml-3 user" %></h3>
           <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l @post.created_at %></p>
         </div>
+        <div class="post_show">
         <div class="d-flex flex-column border-bottom pb-3">
-          <h4><%= @post.body %></h4>
+          <h4 class=" post_body"><%= safe_join(@post.body.split("\n"),tag(:br)) %></h4>
           <% if @post.image.attached? %>
             <%= image_tag @post.image, class:"img-fluid col-11 mt-2 d-flex align-items-center" %>
           <% end %>
@@ -29,7 +30,7 @@
           <div class="d-flex justify-content-center">
             <%= form_with model: [@post, @post_comment] do |f| %>
               <%= f.text_area :comment, rows: '1', placeholder: "コメントする", class: "col-9" %>
-              <%= f.submit "送信" %>
+              <%= f.submit "送信", class: "btn btn-outline-secondary btn-sm " %>
             <% end %>
           </div>
           <div class="d-flex justify-content-center pt-3">
@@ -41,18 +42,22 @@
         <% end %>
         <div>
           <% @post.post_comments.each do |post_comment| %>
-            <div class="row pt-3">
-              <%= image_tag post_comment.user.get_profile_image(45, 45), class: "border rounded-circle" %>
-              <h5 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to @post.user.name, user_path(@post.user.id), class: "ml-3 user" %></h5>
-              <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l @post.created_at %></p>
+            <div class="row col-11 pt-3">
+              <%= image_tag post_comment.user.get_profile_image(45, 45), class: "border rounded-circle user_icon3" %>
+              <h5 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to post_comment.user.name, user_path(post_comment.user.id), class: "ml-3 user" %></h5>
+              <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post_comment.created_at %></p>
+            </div>
+            <div class="d-flex justify-content-between pb-3">
+              <h6 class="pt-2  post_body"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></h6>
             </div>
             <div class="d-flex justify-content-between pb-3 border-bottom">
-              <h6 class="pt-2"><%= post_comment.comment %></h6>
-              <% if @post.user == current_user %>
+            <div></div>
+              <% if post_comment.user == current_user %>
                 <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mr-4" %>
               <% end %>
             </div>
           <% end %>
+        </div>
         </div>
       </div>
     </div>

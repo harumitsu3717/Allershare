@@ -8,8 +8,9 @@
     <%= link_to post_path(post.id), class:"border-bottom pb-2 pl-2 post" do %>
       <p class="mb-0"><%= post.body %> </p>
       <% if post.image.attached? %>
-        <%= image_tag post.image, class:"img-fluid col-11 mt-2" %>
+        <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>
+      <h4 class="mt-1 pl-4"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h4>
     <% end %>
   </div>
 <% end %>

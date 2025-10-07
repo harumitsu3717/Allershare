@@ -26,4 +26,9 @@ mikesan = User.find_or_create_by!(email: "mike@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/mikeneko.jpg"), filename:"mikeneko.jpg")
 end
 
+administrator = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
+  admin.password = "password"
+  admin.password_confirmation = "password"
+end
+
 puts "seedの実行が完了しました"

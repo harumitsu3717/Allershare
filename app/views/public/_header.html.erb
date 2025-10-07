@@ -7,6 +7,11 @@
           <% end %>
         </div>
         <div class="flex-fill d-flex align-items-center">
+          <%= link_to search_path,class:"p-3 border-top border-bottom nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-magnifying-glass"></i>検索</h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center">
           <%= link_to posts_path,class:"p-3 border-top border-bottom nav_link" do %>
             <h5 class="mb-0"><i class="fa-solid fa-book-open"></i>投稿一覧</h5>
           <% end %>

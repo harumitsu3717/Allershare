@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/header' %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-8 border users">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :content %>
+      <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post"}) %>
+      <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"}) %>
+      <%= f.submit '検索' %>
+    <% end %>
+    <% if @model == 'user' %>
+      <h3>"<%= @content %>"の検索結果</h3>
+      <% if @records.present? %>
+        <%= render 'public/users/index', users: @records %>
+      <% else %>
+        <h3>検索結果が見つかりませんでした</h3>
+      <% end %>
+    <% elsif @model == 'post' %>
+      <h3>"<%= @content %>"の検索結果</h3>
+      <% if @records.present? %>
+        <%= render 'public/posts/index', posts: @records %>
+      <% else %>
+        <h3>検索結果が見つかりませんでした</h3>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -1,25 +1,30 @@
-<div class="container">
+<div class="container frame">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 col-sm-2 col-md-3">
       <%= render 'public/header' %>
     </div>
 
-    <div class="col-1"></div>
+    <div class="col-1 hidden-on-mobile"></div>
 
     <div class="col-8">
-      <div class="d-flex align-items-center border-bottom pb-3">
-        <div class="d-flex flex-column justify-content-center">
+      <div class="d-flex flex-column justify-content-center border-bottom pb-3">
+        <div class="row d-flex align-items-center justify-content-between">
           <%= image_tag @user.get_profile_image(100, 100), class: "border rounded-circle user_icon", size: "100x100" %>
-          <h2 class="text-center"> <%= @user.name %></h2>
+          <h2 class=""> <%= @user.name %></h2>
+          <div></div>
         </div>
-        <p class="border rounded col-8 ml-3"> <%= @user.profile %></p>
+        <p class="border rounded mt-3 ml-3 profile">
+          <% if @user.profile %>
+            <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
+          <% end %>
+        </p>
         <%= link_to edit_user_path(current_user.id) do %>
-          <h1 class="ml-4 pb-3"><i class="fa-solid fa-gear"></i></h1>
+          <p class="col-11 ml-4 mt-2 btn btn-outline-secondary w-100"><i class="fa-solid fa-gear"> 設定</i></p>
         <% end %>
       </div>
   
 
-      <div class="col-10 border-bottom mt-2 posts">
+      <div class="border-bottom mt-2 user_posts">
         <%= render 'public/posts/index' , posts: @posts %>
       </div>
     </div>

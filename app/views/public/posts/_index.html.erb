@@ -6,7 +6,7 @@
   </div>
   <div class="d-flex flex-column mt-2">
     <%= link_to post_path(post.id), class:"border-bottom pb-2 pl-2 post" do %>
-      <p class="mb-0"><%= post.body %> </p>
+      <p class="mb-0 post_body"><%= safe_join(post.body.split("\n"),tag(:br)) %> </p>
       <% if post.image.attached? %>
         <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>

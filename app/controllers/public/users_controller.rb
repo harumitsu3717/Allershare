@@ -19,6 +19,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    if @user.id == current_user.id
+      redirect_to mypage_path
+    end
   end
 
   def update

@@ -19,11 +19,15 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :index, :show, :destroy] do
       resources :post_comments, only: [:create, :edit, :destroy]
       resource :favorite, only: [:create, :destroy]
+      get 'favorites', on: :collection
     end
-    resources :users, only: [:edit, :show, :index, :update]
-    get 'mypage' => 'users#mypage', as: 'mypage'
-    get 'unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch 'withdraw' => 'users#withdraw', as: 'withdraw'
+    resources :users, only: [:edit, :show, :index, :update] do
+      get 'mypage', on: :collection
+      member do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
     get '/search' => 'searches#search', as: 'search'
     get 'posts/:id/post_comments' => 'posts#show'
   end

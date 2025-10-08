@@ -2,8 +2,13 @@
   <div class="nav">
       <% if user_signed_in? %>
         <div class="flex-fill d-flex align-items-center justify-content-center nav_start">
-          <%= link_to mypage_path, class:"p-3 nav_link" do %>
+          <%= link_to mypage_users_path, class:"p-3 nav_link" do %>
             <h5 class="mb-0"><i class="fa-solid fa-house"></i><span class="hidden-on-mobile">マイページ</span></h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%= link_to favorites_posts_path,class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-bookmark"></i><span class="hidden-on-mobile">お気に入り</span></h5>
           <% end %>
         </div>
         <div class="flex-fill d-flex align-items-center justify-content-center">

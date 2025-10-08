@@ -8,8 +8,8 @@
         <p class="unsub_text"><span>退会する場合は</span><span>『退会する』</span><span>をクリックしてください。</span></p>
       </div>
       <div class="y_n pt-2 mt-4">
-        <%= link_to '退会しない', mypage_path, class: "btn btn-outline-primary n" %>
-        <%= link_to '退会する', withdraw_path(@user), method: :patch, class: "btn btn-outline-danger y " %>
+        <%= link_to '退会しない', mypage_users_path, class: "btn btn-outline-primary n" %>
+        <%= link_to '退会する', withdraw_user_path(@user), method: :patch, class: "btn btn-outline-danger y " %>
       </div>
     </div>
   </div>

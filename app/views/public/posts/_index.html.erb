@@ -5,12 +5,15 @@
     <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
   </div>
   <div class="d-flex flex-column mt-2">
-    <%= link_to post_path(post.id), class:"border-bottom pb-2 pl-2 post" do %>
+    <%= link_to post_path(post.id), class:"pb-2 pl-2 post" do %>
       <p class="mb-0 post_body"><%= safe_join(post.body.split("\n"),tag(:br)) %> </p>
       <% if post.image.attached? %>
         <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>
-      <h4 class="mt-1 pl-4"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h4>
     <% end %>
+    <div class="row mx-0 border-bottom mt-1 ">
+      <h5 id="favorite_btn_<%= post.id %>"><%= render "public/favorites/btn", post: post %></h5>
+      <h5 class="pl-4 mb-0"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h5>
+      </div>
   </div>
 <% end %>

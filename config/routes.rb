@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :posts, only: [:new, :create, :index, :show, :destroy] do
       resources :post_comments, only: [:create, :edit, :destroy]
+      resource :favorite, only: [:create, :destroy]
     end
     resources :users, only: [:edit, :show, :index, :update]
     get 'mypage' => 'users#mypage', as: 'mypage'

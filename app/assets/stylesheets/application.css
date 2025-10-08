@@ -236,6 +236,21 @@ li {
   color: black;
 }
 
+.count {
+  color: black;
+  width: 500%;
+}
+
+.count:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.count:active {
+  color: black;
+  text-decoration: none;
+}
+
 .users {
   height: 100vh;
   overflow-y: scroll;
@@ -293,4 +308,12 @@ li {
 
 .unsub_text span {
   display: inline-block;
+}
+
+.favorite_true {
+  color: #d9333f;
+}
+
+.favorite_false {
+  color: #dee2e6;
 }

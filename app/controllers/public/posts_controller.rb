@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to mypage_path
+      redirect_to mypage_users_path
     else
       render :new
     end
@@ -31,6 +31,10 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path
+  end
+
+  def favorites
+    @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
   end
 
   private

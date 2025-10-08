@@ -20,25 +20,7 @@
   
 
     <div class="col-10 border-bottom mt-2 admin_posts">
-      <% @posts.each do |post| %>
-        <div class="row col-11 d-flex mt-2">
-          <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon" %>
-          <p class="d-flex align-items-center mb-0 mr-3 ml-2"><%= post.user.name %></p>
-          <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
-        </div>
-        <div class="d-flex flex-column mt-2">
-          <%= link_to admin_post_path(post.id), class:"border-bottom pb-2 pl-2 post" do %>
-            <p class="mb-0"><%= safe_join(post.body.split("\n"),tag(:br)) %></p>
-            <% if post.image.attached? %>
-              <%= image_tag post.image, class:"img-fluid col-11 mt-2" %>
-            <% end %>
-          <% end %>
-          <div class="d-flex justify-content-between align-items-center mt-2 border-bottom">
-          <h3 class="mt-1"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h3>
-            <%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mr-4" %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'admin/posts/index', posts: @posts %>
     </div>
 </div>
 </div>

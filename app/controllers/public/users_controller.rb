@@ -12,22 +12,25 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user.id == current_user.id
-      redirect_to mypage_path
+      redirect_to mypage_users_path
     end
   end
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
-    if @user.id == current_user.id
-      redirect_to mypage_path
+    if user_signed_in?
+      if @user.id == current_user.id
+      redirect_to mypage_users_path
+      end
+    else
     end
   end
 
   def update
     user = User.find(params[:id])
     user.update(user_params)
-    redirect_to mypage_path
+    redirect_to mypage_users_path
   end
 
   def unsubscribe

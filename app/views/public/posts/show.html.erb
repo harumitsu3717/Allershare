@@ -19,8 +19,12 @@
             <%= image_tag @post.image, class:"img-fluid col-11 mt-2 d-flex align-items-center" %>
           <% end %>
           <div class="d-flex align-items-center mt-0">
-          <h5 class="ml-1" id="favorite_btn_<%= @post.id %>"><%= render "public/favorites/btn", post: @post %></h3>
-          <h5 class="mt-1 mx-3"><i class="fa-regular fa-message"></i>  <%= @post.post_comments.count %> </h3>
+          <% if user_signed_in? %>
+            <h5 class="ml-1" id="favorite_btn_<%= @post.id %>"><%= render "public/favorites/btn", post: @post %></h5>
+          <% else %>
+            <h5><div class="count"><i class="fa-regular fa-heart favorite_false"></i><%= @post.favorites.count %></div></h5>
+          <% end %>
+          <h5 class="mt-1 mx-3"><i class="fa-regular fa-message"></i>  <%= @post.post_comments.count %> </h5>
           <% if @post.user == current_user %>
             <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm ml-3 " %>
           <% end %>

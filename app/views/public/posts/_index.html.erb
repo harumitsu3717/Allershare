@@ -12,7 +12,11 @@
       <% end %>
     <% end %>
     <div class="row mx-0 border-bottom mt-1 ">
-      <h5 id="favorite_btn_<%= post.id %>"><%= render "public/favorites/btn", post: post %></h5>
+      <% if user_signed_in? %>
+        <h5 id="favorite_btn_<%= post.id %>"><%= render "public/favorites/btn", post: post %></h5>
+      <% else %>
+        <h5><div class="count"><i class="fa-regular fa-heart favorite_false"></i><%= post.favorites.count %></div></h5>
+      <% end %>
       <h5 class="pl-4 mb-0"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h5>
     </div>
   </div>

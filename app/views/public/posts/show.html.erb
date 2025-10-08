@@ -1,28 +1,64 @@
-<div class="container">
+<div class="container frame">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 col-sm-2 col-md-3">
       <%= render 'public/header' %>
     </div>
 
-    <div class="col-1"></div>
+    <div class="col-1 hidden-on-mobile"></div>
 
     <div class="col-8">
-    <div class="row col-11 d-flex mt-2 mb-2">
+      <div class="row col-11 d-flex mt-2 mb-2">
           <%= image_tag @post.user.get_profile_image(80, 80), class: "border rounded-circle user_icon2" %>
           <h3 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to @post.user.name, user_path(@post.user.id), class: "ml-3 user" %></h3>
           <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l @post.created_at %></p>
         </div>
+        <div class="post_show">
         <div class="d-flex flex-column border-bottom pb-3">
-          <h4><%= @post.body %></h4>
+          <h4 class=" post_body"><%= safe_join(@post.body.split("\n"),tag(:br)) %></h4>
           <% if @post.image.attached? %>
             <%= image_tag @post.image, class:"img-fluid col-11 mt-2 d-flex align-items-center" %>
           <% end %>
-          <div class="d-flex justify-content-end mt-2">
+          <div class="d-flex justify-content-between align-items-center mt-2">
+          <h3 class="mt-1"><i class="fa-regular fa-message"></i>  <%= @post.post_comments.count %> </h3>
           <% if @post.user == current_user %>
             <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mr-4" %>
           <% end %>
           </div>
         </div>
-</div>
-</div>
+        <% if user_signed_in? %>
+        <div class="border-bottom py-3">
+          <div class="d-flex justify-content-center">
+            <%= form_with model: [@post, @post_comment] do |f| %>
+              <%= f.text_area :comment, rows: '1', placeholder: "コメントする", class: "col-9" %>
+              <%= f.submit "送信", class: "btn btn-outline-secondary btn-sm " %>
+            <% end %>
+          </div>
+          <div class="d-flex justify-content-center pt-3">
+          <% if @error_comment.present? %>
+            <p>コメントを入力してください</p>
+          <% end %>
+          </div>
+        </div>
+        <% end %>
+        <div>
+          <% @post.post_comments.each do |post_comment| %>
+            <div class="row col-11 pt-3">
+              <%= image_tag post_comment.user.get_profile_image(45, 45), class: "border rounded-circle user_icon3" %>
+              <h5 class="d-flex align-items-center mb-0 mr-3 ml-2"><%= link_to post_comment.user.name, user_path(post_comment.user.id), class: "ml-3 user" %></h5>
+              <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post_comment.created_at %></p>
+            </div>
+            <div class="d-flex justify-content-between pb-3">
+              <h6 class="pt-2  post_body"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></h6>
+            </div>
+            <div class="d-flex justify-content-between pb-3 border-bottom">
+            <div></div>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mr-4" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
 </div>

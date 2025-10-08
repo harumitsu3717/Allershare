@@ -5,7 +5,8 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
+    @post = Post.new
   end
 
   def edit
@@ -18,6 +19,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    if @user.id == current_user.id
+      redirect_to mypage_path
+    end
   end
 
   def update

@@ -1,27 +1,13 @@
-<div class="container">
+<div class="container frame">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 col-sm-2 col-md-3">
       <%= render 'public/header' %>
     </div>
 
-    <div class="col-1"></div>
+    <div class="col-1 hidden-on-mobile"></div>
 
     <div class="col-8 border posts">
-    <% @posts.each do |post| %>
-      <div class="row col-11 d-flex mt-2">
-        <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon", size: "45x45" %>
-        <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, user_path(post.user.id), class: "ml-3 user" %></p>
-        <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
-      </div>
-      <div class="d-flex flex-column mt-2">
-        <%= link_to post_path(post.id), class:"border-bottom pb-2 pl-2 post" do %>
-          <p class="mb-0"><%= post.body %> </p>
-          <% if post.image.attached? %>
-            <%= image_tag post.image, class:"img-fluid col-11 mt-2" %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'index', posts: @posts %>
     </div>
   </div>
 </div>

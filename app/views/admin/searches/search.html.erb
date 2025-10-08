@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center">
+<div class="d-flex flex-column align-items-center col-8 border p-3">
+<% if @model == 'user' %>
+  <h3>"<%= @content %>"の検索結果</h3>
+  <% if @records.present? %>
+    <div class="search_result w-100">
+    <%= render 'admin/users/index', users: @records %>
+    </div>
+  <% else %>
+    <h3>検索結果が見つかりませんでした</h3>
+  <% end %>
+<% elsif @model == 'post' %>
+  <h3>"<%= @content %>"の検索結果</h3>
+  <% if @records.present? %>
+    <div class="search_result w-100">
+    <%= render 'admin/posts/index', posts: @records %>
+    </div>
+  <% else %>
+    <h3>検索結果が見つかりませんでした</h3>
+  <% end %>
+<% end %>
+</div>
+</div>

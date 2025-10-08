@@ -1,35 +1,40 @@
 <header>
-  <div class="d-flex flex-column justify-content-around align-items-center pb-5 border-right nav">
+  <div class="nav">
       <% if user_signed_in? %>
-        <div class="mt-5 flex-fill d-flex align-items-center">
-          <%= link_to mypage_path, class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-house"></i>マイページ</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center nav_start">
+          <%= link_to mypage_path, class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-house"></i><span class="hidden-on-mobile">マイページ</span></h5>
           <% end %>
         </div>
-        <div class="flex-fill d-flex align-items-center">
-          <%= link_to posts_path,class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-book-open"></i>投稿一覧</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%= link_to search_path,class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-magnifying-glass"></i><span class="hidden-on-mobile">検索</span></h5>
           <% end %>
         </div>
-        <div class="flex-fill d-flex align-items-center">
-          <%= link_to new_post_path, class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-pencil"></i>新規投稿</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%= link_to posts_path,class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-book-open"></i><span class="hidden-on-mobile">投稿一覧</span></h5>
           <% end %>
         </div>
-        <div class="mb-5 flex-fill d-flex align-items-center">
-          <%= link_to destroy_user_session_path, method: :delete, class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-right-from-bracket"></i>ログアウト</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%= link_to new_post_path, class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-pencil"></i><span class="hidden-on-mobile">新規投稿</span></h5>
+          <% end %>
+        </div>
+        <div class="flex-fill d-flex align-items-center justify-content-center nav_end">
+          <%= link_to destroy_user_session_path, method: :delete, class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-right-from-bracket"></i><span class="hidden-on-mobile">ログアウト</span></h5>
           <% end %>
         </div>
       <% else %>
-        <div class="flex-fill d-flex align-items-center">
-          <%= link_to new_user_registration_path, class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-user-plus"></i>新規登録</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%= link_to new_user_registration_path, class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-user-plus"></i><span class="hidden-on-mobile">新規登録</span></h5>
           <% end %>
         </div>
-        <div class="flex-fill d-flex align-items-center">
-          <%=link_to new_user_session_path, class:"p-3 border-top border-bottom nav_link" do %>
-            <h5 class="mb-0"><i class="fa-solid fa-right-to-bracket"></i>ログイン</h5>
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <%=link_to new_user_session_path, class:"p-3 nav_link" do %>
+            <h5 class="mb-0"><i class="fa-solid fa-right-to-bracket"></i><span class="hidden-on-mobile">ログイン</span></h5>
           <% end %>
         </div>
       <% end %>

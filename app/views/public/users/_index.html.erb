@@ -1,0 +1,10 @@
+<% users.each do |user| %>
+  <div class="d-flex justify-content-center">
+  <div class="row col-12 mt-2 user_content">
+  <%= link_to user_path(user.id), class:"border-bottom d-flex align-items-center pb-2 users_user" do %>
+    <%= image_tag user.get_profile_image(45, 45), class: " border rounded-circle icon", size: "45x45" %>
+    <p class=" ml-3 mb-0 mr-3"><%= user.name %></p>
+  <% end %>
+  </div>
+  </div>
+<% end %>

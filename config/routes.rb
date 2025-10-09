@@ -23,9 +23,11 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:edit, :show, :index, :update] do
       get 'mypage', on: :collection
+      resource :relationship, only: [:create, :destroy]
       member do
         get :unsubscribe
         patch :withdraw
+        get :follows, :followers
       end
     end
     get '/search' => 'searches#search', as: 'search'

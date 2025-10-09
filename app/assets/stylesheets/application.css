@@ -317,3 +317,13 @@ li {
 .favorite_false {
   color: #dee2e6;
 }
+
+.follow {
+  color: #808080;
+  text-decoration: none;
+}
+
+.follow:hover {
+  color: #808080;
+  text-decoration-color: #808080;
+}

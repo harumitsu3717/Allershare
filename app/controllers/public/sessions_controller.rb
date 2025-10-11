@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && !@user.is_active
-        redirect_to new_user_registration_path
+        redirect_to new_user_registration_path,  notice: '既に退会したアカウントです'
       end
     end
   end

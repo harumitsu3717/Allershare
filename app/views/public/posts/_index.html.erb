@@ -10,6 +10,13 @@
       <% if post.image.attached? %>
         <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>
+      <div class="d-flex">
+      <% post.tags.each do |tag| %>
+        <%= link_to search_path(content: tag.name, model:"tag", method: "perfect") do %>
+          <p class="mr-1">＃<%= tag.name %></p>
+        <% end %>
+      <% end %>
+      </div>
     <% end %>
     <div class="row mx-0 border-bottom mt-1 ">
       <% if user_signed_in? %>

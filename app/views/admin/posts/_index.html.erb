@@ -11,6 +11,13 @@
       <% if post.image.attached? %>
         <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>
+      <div class="d-flex">
+      <% post.tags.each do |tag| %>
+        <%= link_to admin_search_path(content: tag.name, model:"tag", method: "perfect") do %>
+          <p class="mr-1">＃<%= tag.name %></p>
+        <% end %>
+      <% end %>
+      </div>
     <% end %>
     <div class="d-flex align-items-center border-bottom">
         <h3 class="mr-5"><div class="count"><i class="fa-regular fa-heart favorite_false"></i><%= post.favorites.count %></div></h3>

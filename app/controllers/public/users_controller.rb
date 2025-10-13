@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def mypage
     @user = User.find(current_user.id)
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
   end
 
   def index

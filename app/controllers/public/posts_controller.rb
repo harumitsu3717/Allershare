@@ -7,7 +7,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tags = params[:post][:tag_name].split(',')
     if @post.save
+      @post.save_tags(tags)
       redirect_to mypage_users_path
     else
       render :new
@@ -15,7 +17,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     @post = Post.new
   end
 

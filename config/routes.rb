@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
     get '/search' => 'searches#search'
+    get '/' => 'dashboards#index'
     patch 'withdrawal/:id' => 'users#withdrawal', as: 'withdrawal'
     resources :posts, only: [:show, :destroy] do
       resources :post_comments, only: [:destroy]

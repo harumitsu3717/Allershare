@@ -14,7 +14,7 @@
       <div class="d-flex flex-wrap">
       <% post.tags.each do |tag| %>
         <%= link_to admin_search_path(content: tag.name, model:"tag", method: "perfect") do %>
-          <p class="mr-1">＃<%= tag.name %></p>
+          <p class="mr-1 mb-0">＃<%= tag.name %></p>
         <% end %>
       <% end %>
       </div>

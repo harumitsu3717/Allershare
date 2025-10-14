@@ -9,11 +9,16 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     tags = params[:post][:tag_name].split(',')
     if @post.save
-      @post.save_tags(tags)
-      redirect_to mypage_users_path
+      ActiveRecord::Base.transaction do
+        @post.save_tags(tags)
+        redirect_to mypage_users_path
+      end
     else
       render :new
     end
+  rescue ActiveRecord::RecordNotUnique => e
+    flash.now[:error] = "同じタグを複数回投稿することはできません。"
+    redirect_to new_post_path, flash: { error: flash[:error]}
   end
 
   def index

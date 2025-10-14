@@ -11,7 +11,7 @@
           <% if @post.image.attached? %>
             <%= image_tag @post.image, class:"img-fluid col-11 mt-2 d-flex align-items-center" %>
           <% end %>
-          <div class="d-flex">
+          <div class="d-flex flex-wrap">
             <% @post.tags.each do |tag| %>
               <%= link_to admin_search_path(content: tag.name, model:"tag", method: "perfect") do %>
                 <p class="mr-1">＃<%= tag.name %></p>

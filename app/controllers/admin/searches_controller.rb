@@ -11,7 +11,16 @@ class Admin::SearchesController < ApplicationController
     elsif @model == 'post'
       @records = Post.search_for(@content, @method)
     elsif @model == 'tag'
-      @records = Tag.search_posts_for(@content, @method)
+      @search_results = Tag.search_posts_for(@content, @method)
+      @displayed_post_ids = []
+
+      @records = []
+      @search_results.each do |post|
+        unless @displayed_post_ids.include?(post.id)
+          @records << post
+          @displayed_post_ids << post.id
+        end
+      end
     end
   end
   

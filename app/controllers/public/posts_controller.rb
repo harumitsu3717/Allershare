@@ -31,13 +31,14 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
-  def edit
-  end
-
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    redirect_to posts_path
+    if post.user.id == current_user.id
+      post.destroy
+      redirect_to posts_path
+    else
+      redirect_to mypage_users_path
+    end
   end
 
   def favorites

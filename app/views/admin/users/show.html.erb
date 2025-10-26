@@ -1,26 +1,24 @@
 <div class="conteiner d-flex justify-content-center">
-<div class="col-8">
-  <div class="d-flex flex-column justify-content-center border-bottom pb-3">
-    <div class="row d-flex align-items-center">
-      <%= image_tag @user.get_profile_image(100, 100), class: "border rounded-circle user_icon", size: "100x100" %>
-      <h2 class="ml-5"> <%= @user.name %></h2>
-      <div></div>
-    </div>
-    <p class="border rounded mt-3 ml-3 profile">
-      <% if @user.profile %>
-        <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
+  <div class="col-8">
+    <div class="d-flex flex-column justify-content-center border-bottom pb-3">
+      <div class="row d-flex align-items-center">
+        <%= image_tag @user.get_profile_image(100, 100), class: "border rounded-circle user_icon", size: "100x100" %>
+        <h2 class="ml-5"> <%= @user.name %></h2>
+        <div></div>
+      </div>
+      <p class="border rounded mt-3 ml-3 profile">
+        <% if @user.profile %>
+          <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
+        <% end %>
+      </p>
+      <% if @user.is_active %>
+        <%= link_to '退会させる', admin_withdrawal_path(@user.id), method: :patch, "data-confirm" => "退会させますか？", class: "btn btn-outline-danger w-100" %>
+      <% else %>
+        <%= link_to '有効にする', admin_withdrawal_path(@user.id), method: :patch, "data-confirm" => "有効にさせますか？", class: "btn btn-outline-info w-100" %>
       <% end %>
-    </p>
-    <% if @user.is_active %>
-      <%= link_to '退会させる', admin_withdrawal_path(@user.id), method: :patch, "data-confirm" => "退会させますか？", class: "btn btn-outline-danger w-100" %>
-    <% else %>
-      <%= link_to '有効にする', admin_withdrawal_path(@user.id), method: :patch, "data-confirm" => "有効にさせますか？", class: "btn btn-outline-info w-100" %>
-    <% end %>
     </div>
-  
-
     <div class="col-10 border-bottom mt-2 admin_posts">
       <%= render 'admin/posts/index', posts: @posts %>
     </div>
-</div>
+  </div>
 </div>

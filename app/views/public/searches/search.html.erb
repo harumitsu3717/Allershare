@@ -7,46 +7,47 @@
     <div class="col-1 hidden-on-mobile"></div>
 
     <div class="col-8 border p-2 search">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <div class="d-flex justify-content-center">
-        <%= f.text_field :content %>
-      </div>
-      <div class="d-flex justify-content-center my-2">
-        <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post", "タグ" => "tag"}) %>
-        <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"}), class: "datalist" %>
-        <%= f.submit '検索', class: "btn btn-outline-info btn-sm" %>
-      </div>
-    <% end %>
-    <% if @model == 'user' %>
-      <h3 class="d-flex justify-content-center">"<%= @content %>"の検索結果</h3>
-      <% if @records.present? %>
-      <div class="search_result">
-        <%= render 'public/users/index', users: @records %>
-      </div>
-      <% else %>
-      <div class="d-flex justify-content-center">
-        <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
-      </div>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :content %>
+        </div>
+        <div class="d-flex justify-content-center my-2">
+          <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "post", "タグ" => "tag"}) %>
+          <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"}), class: "datalist" %>
+          <%= f.submit '検索', class: "btn btn-outline-info btn-sm" %>
+        </div>
       <% end %>
-    <% elsif @model == 'post' %>
-      <h3 class="d-flex justify-content-center">"<%= @content %>"の検索結果</h3>
-      <% if @records.present? %>
-      <div class="search_result">
-        <%= render 'public/posts/index', posts: @records %>
-      </div>
-      <% else %>
-        <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
+
+      <% if @model == 'user' %>
+        <h3 class="d-flex justify-content-center">"<%= @content %>"の検索結果</h3>
+        <% if @records.present? %>
+          <div class="search_result">
+            <%= render 'public/users/index', users: @records %>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-center">
+            <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
+          </div>
+        <% end %>
+      <% elsif @model == 'post' %>
+        <h3 class="d-flex justify-content-center">"<%= @content %>"の検索結果</h3>
+        <% if @records.present? %>
+          <div class="search_result">
+            <%= render 'public/posts/index', posts: @records %>
+          </div>
+        <% else %>
+          <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
+        <% end %>
+      <% elsif @model == 'tag' %>
+        <h3 class="d-flex justify-content-center">"#<%= @content %>"の検索結果</h3>
+        <% if @records.present? %>
+          <div class="search_result">
+            <%= render 'public/posts/index', posts: @records %>
+          </div>
+        <% else %>
+          <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
+        <% end %>
       <% end %>
-    <% elsif @model == 'tag' %>
-      <h3 class="d-flex justify-content-center">"#<%= @content %>"の検索結果</h3>
-      <% if @records.present? %>
-      <div class="search_result">
-        <%= render 'public/posts/index', posts: @records %>
-      </div>
-      <% else %>
-        <h3 class="mt-3 search_failure text-center"><span>検索結果が</span><span>見つかりません</span><span>でした</span></h3>
-      <% end %>
-    <% end %>
     </div>
   </div>
 </div>

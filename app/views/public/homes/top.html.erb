@@ -1,24 +1,25 @@
 <div class="container-fluid background-image">
   <div class= "col-10 haikei d-flex justify-content-center align-items-center">
-  <div class= "d-flex flex-column align-items-center justify-content-center contents py-4 px-0">
-  <h1 class="row font-italic text d-flex justify-content-center">
-    <span>Allershareに</span><span>ようこそ</span>
-  </h1>
-  <p class= "mt-5 text-center text">Allershareは<br>
-     <span>「すべての</span><span>食事に制限を持つ人に</span><span>『選択の自由』を」</span><br>
-     <span>をモットーに製作された</span><span>SNSサービスです。</span><br>
-     <span>食べられないものを</span><span>諦めてしまうのではなく、</span><br>
-     <span>食べられる『別の選択肢』</span><span>を探してみませんか。</span></p>
+    <div class= "d-flex flex-column align-items-center justify-content-center contents py-4 px-0">
+      <h1 class="row font-italic text d-flex justify-content-center mx-1">
+        <span>Allershareに</span><span>ようこそ</span>
+      </h1>
+      <p class= "mt-5 text-center text">Allershareは<br>
+        <span>「すべての</span><span>食事に制限を持つ人に</span><span>『選択の自由』を」</span><br>
+        <span>をモットーに製作された</span><span>SNSサービスです。</span><br>
+        <span>食べられないものを</span><span>諦めてしまうのではなく、</span><br>
+        <span>食べられる『別の選択肢』</span><span>を探してみませんか。</span>
+      </p>
 
-  <%= link_to "覗いてみる", posts_path, class: "link font-weight-bold mb-3" %>
+      <%= link_to "覗いてみる", posts_path, class: "link font-weight-bold mb-3" %>
 
-  <div class="row">
-  <% if user_signed_in? %>
-  <% else %>
-  <%= link_to "新規登録", new_user_registration_path, class: "link font-weight-bold mr-3" %>
-  <%= link_to "ログイン", new_user_session_path, class: "link font-weight-bold ml-3" %>
-  <% end %>
-  </div>
-  </div>
+      <div class="row">
+        <% if user_signed_in? %>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path, class: "link font-weight-bold mr-3" %>
+          <%= link_to "ログイン", new_user_session_path, class: "link font-weight-bold ml-3" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

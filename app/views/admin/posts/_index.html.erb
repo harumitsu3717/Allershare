@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="row col-11 d-flex mt-2">
       <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon", size: "45x45" %>
-      <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, user_path(post.user.id), class: "ml-3 user" %></p>
+      <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, admin_user_path(post.user.id), class: "ml-3 user" %></p>
       <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
     </div>
     <div class="d-flex flex-column mt-2">

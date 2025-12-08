@@ -21,6 +21,19 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.tagged_with(content,method)
+    if method == 'perfect'
+      posts = Post.joins(:tags).where('tags.name = ?', content)
+    elsif method == 'forward'
+      posts = Post.joins(:tags).where('tags.name LIKE ?', content+'%')
+    elsif method == 'backward'
+      posts = Post.joins(:tags).where('tags.name LIKE ?', '%'+content)
+    elsif method == 'partical'
+      posts = Post.joins(:tags).where('tags.name LIKE ?', '%'+content+'%')
+    end
+    return posts.distinct
+  end
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

@@ -21,8 +21,8 @@
         <%= f.file_field :image, accept: "image/*" %>
 
         <h4 class="mt-3">タグ</h4>
-        <%= flash[:error] %>
         <%= f.text_area :tag_name, class: 'form-control', placeholder:"タグが複数の場合は , で区切ってください" %>
+        <p style="color: red"><%= flash[:error] %></p>
 
         <%= f.submit '投稿', class: "btn btn-outline-info btn-post mt-2" %>
       <% end %>

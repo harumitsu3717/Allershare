@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
       render :new
     end
   rescue ActiveRecord::RecordNotUnique => e
-    flash.now[:error] = "同じタグを複数回投稿することはできません。"
+    flash.now[:error] = "同じタグを複数つけて投稿することはできません。"
     redirect_to new_post_path, flash: { error: flash[:error]}
   end
 

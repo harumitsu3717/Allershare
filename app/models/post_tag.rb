@@ -4,4 +4,5 @@ class PostTag < ApplicationRecord
 
   validates :post_id, presence: true
   validates :post, presence: true
+  
 end

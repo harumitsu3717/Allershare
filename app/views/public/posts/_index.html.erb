@@ -1,4 +1,6 @@
+<div class="scroll">
 <% posts.each do |post| %>
+  <div class="post-item">
   <div class="row col-11 d-flex mt-2">
     <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon", size: "45x45" %>
     <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, user_path(post.user.id), class: "ml-3 user" %></p>
@@ -27,4 +29,10 @@
       <h5 class="pl-4 mb-0"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h5>
     </div>
   </div>
+  </div>
 <% end %>
+</div>
+<div class="pagination">
+  <%= link_to_next_page @posts, '次へ', rel: 'next', class: 'infinite-next' %>
+</div>
+

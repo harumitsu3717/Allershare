@@ -1,6 +1,8 @@
 .alert {
   margin-bottom: 1;
   padding: 0;
+  border: none;
+    border-collapse: collapse;
 }
 
 li {
@@ -326,4 +328,8 @@ li {
 .follow:hover {
   color: #808080;
   text-decoration-color: #808080;
+}
+
+.infinite-next {
+  display: none;
 }

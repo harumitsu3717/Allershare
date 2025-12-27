@@ -8,6 +8,9 @@
 
     <div class="col-8 border posts">
       <%= render 'index', posts: @posts %>
+      <div class="pagination">
+        <%= link_to_next_page @posts, '次へ', rel: 'next', class: 'infinite-next' %>
+      </div>
     </div>
   </div>
 </div>
@@ -17,7 +20,7 @@
 $(function(){
 	$(".posts").infiniteScroll({
 		path: ".pagination a",
-    append: '.post-item',
+    append: ".post-item",
     elementScroll: true,   
     scrollThreshold: 200
 	});

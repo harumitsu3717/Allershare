@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def mypage
     @user = User.find(current_user.id)
-    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(10)
   end
 
   def index
@@ -18,7 +18,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:page]).per(10)
     if user_signed_in?
       if @user.id == current_user.id
       redirect_to mypage_users_path

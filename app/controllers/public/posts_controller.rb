@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(25)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
     @post = Post.new
   end
 
@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
   end
 
   def favorites
-    @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

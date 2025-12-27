@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-2 col-sm-2 col-md-3">
+  <div class="row main">
+    <div class="col-2 col-sm-2 col-md-3 main">
       <%= render 'public/header' %>
     </div>
 
     <div class="col-1 hidden-on-mobile"></div>
 
-    <div class="col-8">
+    <div class="col-8 main">
       <div class="d-flex flex-column justify-content-center border-bottom pb-0">
         <div class="row d-flex align-items-center justify-content-between">
           <%= image_tag @user.get_profile_image(100, 100), class: "border rounded-circle user_icon", size: "100x100" %>
@@ -31,8 +31,23 @@
 
       <div class="border-bottom mt-2 user_posts">
         <%= render 'public/posts/index' , posts: @posts %>
+        <div class="pagination">
+          <%= link_to_next_page @posts, '次へ', rel: 'next', class: 'infinite-next' %>
+        </div>
       </div>
       
     </div>
   </div>
 </div>
+
+<script src="https://unpkg.com/infinite-scroll@5/dist/infinite-scroll.pkgd.min.js"></script>
+<script>
+$(function(){
+	$(".user_posts").infiniteScroll({
+		path: ".pagination a",
+    append: ".post-item",
+    elementScroll: true,   
+    scrollThreshold: 200
+	});
+});
+</script>

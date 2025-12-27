@@ -13,6 +13,10 @@ li {
   height: 80vh;
 }
 
+.main {
+  height: 100vh;
+}
+
 @media (max-width: 768px) {
   .hidden-on-mobile {
     display: none;
@@ -31,6 +35,7 @@ li {
     z-index: 1;
     left: 0;
     text-align: center;
+    height: 8vh;
   }
 
   .nav_link {
@@ -52,9 +57,9 @@ li {
   }
 
   .user_posts {
-    height: 65vh;
+    height: 60vh;
     overflow-y: scroll;
-    margin-bottom: 56px;
+    margin-bottom: 8vh;
   }
 
   .post_show {

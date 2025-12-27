@@ -8,26 +8,21 @@
 
     <div class="col-8 border posts">
       <%= render 'index', posts: @posts %>
+      <div class="pagination">
+        <%= link_to_next_page @posts, '次へ', rel: 'next', class: 'infinite-next' %>
+      </div>
     </div>
   </div>
 </div>
 
 <script src="https://unpkg.com/infinite-scroll@5/dist/infinite-scroll.pkgd.min.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const scrollElem = document.querySelector('.posts') 
-    if (!scrollElem) return
-  
-    if (scrollElem._infScroll) return
-  
-    scrollElem._infScroll = new InfiniteScroll(scrollElem, {
-      path: function () {
-        return '/posts?page=' + (this.pageIndex + 1)
-      },
-      append: '.post-item',
-      history: false,
-      elementScroll: true,   
-      scrollThreshold: 200   
-    })
-  })
-  </script>
+<script>
+$(function(){
+	$(".posts").infiniteScroll({
+		path: ".pagination a",
+    append: ".post-item",
+    elementScroll: true,   
+    scrollThreshold: 200
+	});
+});
+</script>

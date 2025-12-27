@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
   end
 
   def favorites
-    @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+    @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   private

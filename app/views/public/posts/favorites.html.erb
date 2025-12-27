@@ -11,3 +11,15 @@
     </div>
   </div>
 </div>
+
+<script src="https://unpkg.com/infinite-scroll@5/dist/infinite-scroll.pkgd.min.js"></script>
+<script>
+$(function(){
+	$(".posts").infiniteScroll({
+		path: ".pagination a",
+    append: '.post-item',
+    elementScroll: true,   
+    scrollThreshold: 200
+	});
+});
+</script>

@@ -3,8 +3,7 @@ class Admin::DashboardsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
-    @posts = Post.all.order(created_at: :desc)
+    @users = User.all.page(params[:page]).per(5)
   end
 
 end

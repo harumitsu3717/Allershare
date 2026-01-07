@@ -1,29 +1,29 @@
-<div class="col-12">
-  <% posts.each do |post| %>
-    <div class="row col-11 d-flex mt-2">
-      <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon", size: "45x45" %>
-      <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, admin_user_path(post.user.id), class: "ml-3 user" %></p>
-      <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
-    </div>
-    <div class="d-flex flex-column mt-2">
-      <%= link_to admin_post_path(post.id), class:"pb-2 pl-2 post" do %>
-        <p class="mb-0"><%= safe_join(post.body.split("\n"),tag(:br)) %> </p>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
-        <% end %>
-        <div class="d-flex flex-wrap">
-          <% post.tags.each do |tag| %>
-            <%= link_to admin_search_path(content: tag.name, model:"tag", method: "perfect") do %>
-              <p class="mr-1 mb-0">＃<%= tag.name %></p>
-            <% end %>
-          <% end %>
-        </div>
+<% posts.each do |post| %>
+  <div class="post-item">
+  <div class="row col-11 d-flex mt-2">
+    <%= image_tag post.user.get_profile_image(45, 45), class: "border rounded-circle icon", size: "45x45" %>
+    <p class="d-flex align-items-center mb-0 mr-3"><%= link_to post.user.name, admin_user_path(post.user.id), class: "ml-3 user" %></p>
+    <p class="d-flex align-items-center mb-0 ml-3 text-muted"><%= l post.created_at %></p>
+  </div>
+  <div class="d-flex flex-column mt-2">
+    <%= link_to admin_post_path(post.id), class:"pb-2 pl-2 post" do %>
+      <p class="mb-0"><%= safe_join(post.body.split("\n"),tag(:br)) %> </p>
+      <% if post.image.attached? %>
+        <%= image_tag post.image, class:"img-fluid col-11 mt-2 mb-2" %>
       <% end %>
-      <div class="d-flex align-items-center border-bottom">
-        <h3 class="mr-5"><div class="count"><i class="fa-regular fa-heart favorite_false"></i><%= post.favorites.count %></div></h3>
-        <h3 class="mt-1 mx-5"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h3>
-        <%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger ml-5" %>
+      <div class="d-flex flex-wrap">
+        <% post.tags.each do |tag| %>
+          <%= link_to admin_search_path(content: tag.name, model:"tag", method: "perfect") do %>
+            <p class="mr-1 mb-0">＃<%= tag.name %></p>
+          <% end %>
+        <% end %>
       </div>
+    <% end %>
+    <div class="d-flex align-items-center border-bottom">
+      <h3 class="mr-5"><div class="count"><i class="fa-regular fa-heart favorite_false"></i><%= post.favorites.count %></div></h3>
+      <h3 class="mt-1 mx-5"><i class="fa-regular fa-message"></i>  <%= post.post_comments.count %> </h3>
+      <%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger ml-5" %>
     </div>
-  <% end %>
-</div>
+  </div>
+  </div>
+<% end %>

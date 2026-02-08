@@ -24,16 +24,16 @@
 - 特定の原材料を使用していない食品を共有したい時
 - その他コミュニケーション
 
-​
-## 設計書
-
-
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML, CSS, JavaScript, Ruby, SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Visual Studio Code
+
+## 動作検証済み環境
+- OS:Windows11, iOS, Android
+- 使用ブラウザ:Google Chrome(144.0.7559.110/Win11, 144.0.7559.132/Android), Safari 18.6(iOS)
 ​
 ## 使用素材
 - GIRLY DROP様
